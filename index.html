@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Olles meetn met StatsD</title>
+
+		<meta name="description" content="Olles meetn met StatsD">
+		<meta name="author" content="Tom Van Herreweghe">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="white-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<!-- custom additions -->
+		<link rel="stylesheet" href="assets/custom.css">
+
+        <style>
+			.reveal section img {
+				border:none;
+				box-shadow:none;
+			}
+
+			.reveal .light-text {
+				color:#aaa;
+			}
+
+			.reveal .slides section .fragment.highlight-current-red.current-fragment {
+				color:#000;
+			}
+        </style>
+
+        <!-- vim -->
+        <style type="text/css">
+        <!--
+        pre.vimCodeElement { font-family: monospace; color: #657b83; background-color: #fdf6e3; border: 0; box-shadow: none; }
+        .Statement { color: #719e07; }
+        .LineNr { color: #93a1a1; background-color: #eee8d5; padding-bottom: 1px; }
+        .PreProc { color: #cb4b16; }
+        .Constant { color: #2aa198; }
+        .Special { color: #dc322f; }
+        .Identifier { color: #268bd2; }
+        .Comment { color: #93a1a1; font-style: italic; }
+        -->
+        </style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>StatsD</h1>
+					<h2 class="fragment">(olles meetn)</h2>
+				</section>
+
+				<section>
+					<section>
+						<ul>
+							<li><a href="http://twitter.com/miljar">@miljar</a></li>
+							<li><a href="mailto:tom@php-wvl.be">tom@php-wvl.be</a></li>
+						</ul>
+					</section>
+					<section>
+						<img src="assets/kf-logo.png" title="King Foo" alt="king foo logo" />
+					</section>
+					<section>
+						<img src="assets/phpwvl-logo.png" title="PHP-WVL" alt="php-wvl logo" />
+					</section>
+					<section>
+						<img src="assets/ryugi-logo.png" title="Ryugi" alt="ryugi logo" />
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>StatsD</h1>
+						<aside class="notes">
+							<ul>
+								<li>Wie houdt er statistieken bij van wat er in de code gebeurt?</li>
+								<li>Wie kent StatsD?</li>
+								<li>Wie gebruikt er StatsD?</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="assets/etsy_logo_lg_rgb.png" title="Etsy" alt="etsy logo" />
+						<aside class="notes">
+							<ul>
+								<li>Weet er iemand wat Etsy is?</li>
+								<li>Online marktplaats</li>
+								<li>"Unieke" producten =&gt; handgemaakte items</li>
+							</ul>
+							<ul>
+								<li>Engineering Team Religion: Church of Graphs</li>
+								<li>"If it moves, we track it"</li>
+								<li>Triviale zaken zoals aantal logins of logouts</li>
+								<li>Aantal verkopen per gebruiker; API requests timen; ...</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Waarom?</h2>
+						<img class="fragment" src="assets/etsy-logins.png" title="Etsy logins" alt="graph" />
+						<aside class="notes">
+							<ul>
+								<li>Inzichtelijk maken van de impact van code changes</li>
+								<li>Meten op niveau van de applicatie (vb: # items geïmporteerd, ...)</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>StatsD</h2>
+						<ul class="light-text">
+							<li class="fragment highlight-current-red">https://github.com/etsy/statsd</li>
+							<li class="fragment highlight-current-red">NodeJS</li>
+							<li class="fragment highlight-current-red">Statistieken verzamelen</li>
+							<li class="fragment highlight-current-red">UDP / TCP</li>
+							<li class="fragment highlight-current-red">≠ backends (Graphite, Console, MongoDB, ES, ...)</li>
+							<li class="fragment highlight-current-red">Buckets &amp; Values</li>
+							<li class="fragment highlight-current-red">Counter / Timer / Gauge</li>
+						</ul>
+					</section>
+					<section>
+						<h2>&#127881; demo &#127881;</h2>
+					</section>
+				</section>
+
+				<section>
+					<h2><a href="">joind.in/..</a></h2>
+				</section>
+
+			</div>
+
+		</div>
+
+        <script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
