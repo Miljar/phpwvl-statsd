@@ -143,7 +143,22 @@
 							<li class="fragment highlight-current-red">≠ backends (Graphite, Console, MongoDB, ES, ...)</li>
 							<li class="fragment highlight-current-red">Buckets &amp; Values</li>
 							<li class="fragment highlight-current-red">Counter / Timer / Gauge</li>
+							<li class="fragment highlight-current-red">Sampling</li>
 						</ul>
+					</section>
+					<section>
+						<h2>StatsD - Voorbeeldjes</h2>
+						<code>
+							<pre>
+echo "failedLogin:1|c" | nc -u -w0 127.0.0.1 8125
+
+echo "renderTime:145|ms" | nc -u -w0 127.0.0.1 8125
+echo "renderTime:145|ms|@0.1" | nc -u -w0 127.0.0.1 8125
+
+echo "pressure:+345|g" | nc -u -w0 127.0.0.1 8125
+echo "pressure:-14|g" | nc -u -w0 127.0.0.1 8125
+							</pre>
+						</code>
 					</section>
 				</section>
 
@@ -166,7 +181,7 @@
 				</section>
 
 				<section>
-					<h2><a href="">joind.in/..</a></h2>
+					<h2><a href="https://joind.in/15168">https://joind.in/15168</a></h2>
 				</section>
 
 			</div>
